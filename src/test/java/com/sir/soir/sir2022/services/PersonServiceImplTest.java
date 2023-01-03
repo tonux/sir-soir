@@ -30,7 +30,9 @@ class PersonServiceImplTest {
         //Given
         Person person = new Person("Fila", "fila@gmail.com");
         person.setId(1L);
-        when(personRepository.save(person)).thenReturn(person);
+        when(personRepository.save(any())).thenReturn(person);
+
+        // doThrow(new RuntimeException("Error")).when(personRepository).save(any());
 
         //When
         Person personResponse = personService.savePerson(person);

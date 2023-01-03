@@ -3,6 +3,7 @@ package com.sir.soir.sir2022.controller;
 
 import com.sir.soir.sir2022.model.Person;
 import com.sir.soir.sir2022.services.PersonService;
+import com.sir.soir.sir2022.services.PersonServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

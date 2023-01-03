@@ -25,6 +25,11 @@ public class Person {
         this.email = email;
     }
 
+    public Person(Long id, String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
     public Long getId() {
         return id;
     }

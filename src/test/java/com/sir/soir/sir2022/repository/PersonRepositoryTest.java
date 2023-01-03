@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -40,6 +42,21 @@ class PersonRepositoryTest {
         //Then
         assertNotNull(personUpdate);
         assertEquals(personUpdate.getName(), person.getName());
+    }
+
+    @Test
+    void findByName(){
+        //Given
+        personRepository.save(new Person("Diallo222", "diallo@gmail.com"));
+
+        //When
+        List<Person> persons = personRepository.findByName("Diallo");
+
+        //Then
+        assertNotNull(persons);
+        assertTrue(persons.size() > 0);
+        assertTrue(persons.stream().anyMatch(person -> person.getName().equals("Diallo")));
+
     }
 
 
