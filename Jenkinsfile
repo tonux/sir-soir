@@ -29,7 +29,7 @@ pipeline{
              }
               steps{
                 // add deploy steps & alert below
-                 sh 'echo "Deployment into Server" '
+                 sh 'echo "Deployment into Server aws" '
               }
          }
     } // stages
