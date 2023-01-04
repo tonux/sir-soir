@@ -25,7 +25,7 @@ pipeline{
 
          stage('Approve Deployment') {
              input{
-                message : "Do you want to proceed for deployment?"
+                message "Do you want to proceed for deployment?"
              }
               steps{
                 // add deploy steps & alert below
