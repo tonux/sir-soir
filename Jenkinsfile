@@ -1,6 +1,10 @@
 pipeline{
     agent any
 
+    tools {
+        maven '3.6.3'
+    }
+
     stages{
         stage('Source') {
             steps{
@@ -9,8 +13,14 @@ pipeline{
         }
         stage('Build') {
              steps{
-                  sh 'echo "build in process"'
+                  sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install'
              }
+        }
+
+        stage('SonarQube Analysis') {
+              steps{
+                   sh 'mvn sonor:sonar'
+              }
         }
     }
 }
