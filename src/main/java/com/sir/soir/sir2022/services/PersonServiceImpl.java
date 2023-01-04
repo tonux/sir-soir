@@ -17,7 +17,8 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person findById(Long id) {
-        return personRepository.findById(id).get();
+
+        return personRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -28,8 +29,6 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public Person updatePerson(Person person) {
         // check if person exists
-        // Person personToUpdate = personRepository.findById(person.getId()).get();
-
         return personRepository.save(person);
     }
 

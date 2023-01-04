@@ -50,12 +50,12 @@ class PersonRepositoryTest {
         personRepository.save(new Person("Diallo222", "diallo@gmail.com"));
 
         //When
-        List<Person> persons = personRepository.findByName("Diallo");
+        List<Person> persons = personRepository.findByName("Diallo222");
 
         //Then
         assertNotNull(persons);
         assertTrue(persons.size() > 0);
-        assertTrue(persons.stream().anyMatch(person -> person.getName().equals("Diallo")));
+        assertTrue(persons.stream().anyMatch(person -> person.getName().equals("Diallo222")));
 
     }
 

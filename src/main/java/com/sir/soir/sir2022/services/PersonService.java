@@ -1,7 +1,6 @@
 package com.sir.soir.sir2022.services;
 
 import com.sir.soir.sir2022.model.Person;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
