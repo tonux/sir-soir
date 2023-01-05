@@ -1,5 +1,6 @@
 package com.sir.soir.sir2022.repository;
 
+import com.fasterxml.jackson.core.sym.Name;
 import com.sir.soir.sir2022.model.Person;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -60,10 +62,60 @@ class PersonRepositoryTest {
     }
 
 
+
+
     // TODO: add test delete
+    @Test
+    void delete(){
+        //Given
+        final Long testId = 50L;
+        Person person = new Person(testId,"Modou","fall");
+        personRepository.save(person);
+
+        //When
+        personRepository.delete(person);
+
+        //Then
+        List<Person> persons = personRepository.findAll();
+        assertTrue(persons.stream().anyMatch(pers -> pers.getId() == testId));
+    }
 
     // TODO: add test findById
+    @Test
+    void findById(){
+        //Given
+        final Long testId = 50L;
+        Person person = new Person(testId,"Ousmane","Ndiaye");
+        personRepository.save(person);
+
+        //When
+        personRepository.findById(testId);
+
+        //Then
+        Person personFound = personRepository.findById(testId).orElse(null);
+        assertTrue(personFound != null);
+        assertTrue(personFound.getId() == testId);
+
+    }
 
     // TODO: add test findAll
+        @Test
+    void findByAll(){
+        //Given
+        personRepository.save(new Person("Diagn", "diagn@gmail.com"));
+        personRepository.save(new Person("Mor","Fall@gmail.com"));
+        personRepository.save(new Person("Lo","lo@yopmail.com"));
+
+        //When
+        List<Person> persons = personRepository.findAll();
+
+        //Then
+        assertNotNull(persons);
+        assertTrue(persons.size() >= 3);
+        assertTrue(persons.stream().anyMatch(person -> person.getName().equals("Diagn")));
+        assertTrue(persons.stream().anyMatch(person -> person.getName().equals("Mor")));
+        assertTrue(persons.stream().anyMatch(person -> person.getName().equals("Lo")));
+
+    }
 
 }
