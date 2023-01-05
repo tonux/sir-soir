@@ -85,10 +85,11 @@ class PersonControllerTest {
         //TODO
 
         //Given
-        when(personService.findById(10L)).thenReturn(new Person(10L, "Khalifa", "khalifa@gmail.com"));
+        final Long testId = 10l;
+        when(personService.findById(testId)).thenReturn(new Person(10L, "Khalifa", "khalifa@gmail.com"));
 
         //When
-        ResponseEntity<Person> response = personController.getPersonById(10L);
+        ResponseEntity<Person> response = personController.getPersonById(testId);
 
         //then
         assertEquals(HttpStatus.OK, response.getStatusCode());
