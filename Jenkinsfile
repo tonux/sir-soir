@@ -23,6 +23,24 @@ pipeline{
               }
         }
 
+        stage('Build Docker image') {
+                      steps{
+                           sh 'docker build -t reposoir2022/sir-soir:latest .'
+                      }
+        }
+
+        stage('Login to Docker Hub') {
+                  steps{
+                            sh 'docker login -u sirsoir2022 -p sirsoir2022'
+                  }
+         }
+
+        stage('Push to Docker Hub') {
+                    steps{
+                         sh 'docker push reposoir2022/sir-soir:latest'
+                    }
+        }
+
          stage('Approve Deployment') {
              input{
                 message "Do you want to proceed for deployment?"
