@@ -25,7 +25,7 @@ pipeline{
 
         stage('Build Docker image') {
                       steps{
-                           sh 'docker build -t reposoir2022/sir-soir:latest .'
+                           sh 'docker build -t sirsoir2022/sir-soir:latest .'
                       }
         }
 
@@ -37,7 +37,7 @@ pipeline{
 
         stage('Push to Docker Hub') {
                     steps{
-                         sh 'docker push reposoir2022/sir-soir:latest'
+                         sh 'docker push sirsoir2022/sir-soir:latest'
                     }
         }
 
