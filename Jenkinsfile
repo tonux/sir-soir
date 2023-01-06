@@ -41,14 +41,10 @@ pipeline{
                     }
         }
 
-         stage('Approve Deployment') {
-             input{
-                message "Do you want to proceed for deployment?"
-             }
-              steps{
-                // add deploy steps & alert below
-                 sh 'echo "Deployment into Server " '
-              }
+         stage('Deploy to Kubernetes') {
+                    steps{
+                         sh 'kubectl apply -f deploymentservice.yml'
+                    }
          }
     } // stages
 
