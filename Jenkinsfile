@@ -31,7 +31,7 @@ pipeline{
 
         stage('Login to Docker Hub') {
                   steps{
-                            sh 'docker login -u sirsoir2022 -p sirsoir2022'
+                            sh 'docker login -u "sirsoir2022" -p "sirsoir2022"'
                   }
          }
 
